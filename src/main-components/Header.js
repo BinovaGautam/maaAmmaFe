@@ -1,8 +1,14 @@
-import React from 'react';
-
+import React, { useState, useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+
 // import Signin from '../page-components/Authentication/Signin';
 export default function Header() {
+
+	const { user, isLoading, isLoggedIn, setUser } = useContext(AuthContext);
+
+
+
   return (
     <>
     
@@ -83,12 +89,10 @@ export default function Header() {
 
 							</li>
 
+							{!user && 
 							<li className="menu-item btncls">
-
-
-								<button to="/anfrage/" title="" className="uk-button uk-button-primary modal-link"  data-bs-toggle="modal" data-bs-target="#exampleModal1" >Sign In</button>
-
-							</li>
+								<button to="/anfrage/" title="" className="uk-button uk-button-primary modal-link"  data-bs-toggle="modal" data-bs-target="#authModel" >Sign In</button>
+							</li>}
 						</span>
 					</ul>
 

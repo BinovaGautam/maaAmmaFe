@@ -7,18 +7,18 @@
 					menuOverlay = document.querySelector(".menu-overlay"),
 					mediaSize = 991;
 
-				openNavMenu.addEventListener("click", toggleNav);
-				closeNavMenu.addEventListener("click", toggleNav);
+				openNavMenu?.addEventListener("click", toggleNav);
+				closeNavMenu?.addEventListener("click", toggleNav);
 				// close the navMenu by clicking outside
-				menuOverlay.addEventListener("click", toggleNav);
+				menuOverlay?.addEventListener("click", toggleNav);
 
 				function toggleNav() {
-					navMenu.classList.toggle("open");
-					menuOverlay.classList.toggle("active");
+					navMenu?.classList.toggle("open");
+					menuOverlay?.classList.toggle("active");
 					document.body.classList.toggle("hidden-scrolling");
 				}
 
-				navMenu.addEventListener("click", (event) => {
+				navMenu?.addEventListener("click", (event) => {
 					if (event.target.hasAttribute("data-toggle") &&
 						window.innerWidth <= mediaSize) {
 						// prevent default anchor click behavior
@@ -41,18 +41,18 @@
 					}
 				});
 				function collapseSubMenu() {
-					navMenu.querySelector(".menu-item-has-children.active .sub-menu")
+					navMenu?.querySelector(".menu-item-has-children.active .sub-menu")
 						.removeAttribute("style");
-					navMenu.querySelector(".menu-item-has-children.active")
+					navMenu?.querySelector(".menu-item-has-children.active")
 						.classList.remove("active");
 				}
 				function resizeFix() {
 					// if navMenu is open ,close it
-					if (navMenu.classList.contains("open")) {
+					if (navMenu?.classList.contains("open")) {
 						toggleNav();
 					}
 					// if menuItemHasChildren is expanded , collapse it
-					if (navMenu.querySelector(".menu-item-has-children.active")) {
+					if (navMenu?.querySelector(".menu-item-has-children.active")) {
 						collapseSubMenu();
 					}
 				}
