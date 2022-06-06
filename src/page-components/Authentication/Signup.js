@@ -12,7 +12,7 @@ const Signup = ({closeRef, setModalType}) => {
   const { user, setUser} = useContext(AuthContext);
 
   const signup = useMutation(
-    async () => await AuthService.register(email, phone, password),
+    async () => await AuthService.register({email, phone, password}),
     {
       onSettled: (data, error) => {
         if (error) {
@@ -27,7 +27,7 @@ const Signup = ({closeRef, setModalType}) => {
           return;
         }
 
-        let { message, response, id, phone, email } = data;
+        let { message, response, userId, accessToken, email } = data;
 
         if (message) {
           console.log("Message ", message);
@@ -35,9 +35,17 @@ const Signup = ({closeRef, setModalType}) => {
           return;
         }
 
-        if (id) {
+        if (userId) {
           toast.success("Registration Successful");
-            setModalType();
+           let user = {
+             userId,
+             email,
+             token: accessToken,
+           };
+          localStorage.setItem("user", JSON.stringify(user));
+          setUser({ userId, email, token: accessToken });
+          // toast.success("Login Successful");
+          closeRef.current.click();
         }
     },
     }
@@ -63,7 +71,7 @@ const Signup = ({closeRef, setModalType}) => {
           <div className="login-head ps-3">
             <h3>Sign Up</h3>
             <span>
-              or <a href="#" onClick={setModalType}>create an account</a>
+              or <a href="#" onClick={setModalType}>login to existing account</a>
             </span>
             <div className="line-divider"></div>
           </div>
@@ -104,7 +112,7 @@ const Signup = ({closeRef, setModalType}) => {
             </div>
             <div className="mb-1 pe-2">
               <button type="submit" className="subscribe-btn w-100">
-                Register
+               {signup.isLoading ? 'Registering ..' : 'Register'}
               </button>
             </div>
             <div id="emailHelp" className="form-text ps-3 mb-3">
