@@ -13,7 +13,7 @@ export default function RouterPage() {
   return (
     <>
 
-<Router>
+      <Router>
             <Routes>
                 <Route path='/' exact element={<Home/>}></Route>
 
