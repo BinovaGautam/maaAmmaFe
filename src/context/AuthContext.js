@@ -11,16 +11,16 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         setIsLoading(true)
-        const user = localStorage.getItem('user')
-        if (user) {
-            setUser(JSON.parse(user))
-            setIsAuthenticated(true)
-            setIsLoggedIn(true)
-            setIsLoading(false)
+        const localUser = localStorage.getItem('user')
+        if (localUser) {
+          setUser(JSON.parse(localUser));
+          setIsAuthenticated(true);
+          setIsLoggedIn(true);
+          setIsLoading(false);
         } else {
-            setIsLoading(false)
+          setIsLoading(false);
         }
-    }, [token, user])
+    }, [token])
 
     return(
         <AuthContext.Provider value={{
