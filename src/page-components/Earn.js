@@ -6,8 +6,9 @@ const Earn = () => {
   return (
     <>
      <header className="header header-2 header-3">
-    <Header/>    
+        <Header/>    
     </header>
+    
     <Earn_banner/>
     </>
   )
