@@ -49,7 +49,7 @@ export default function Header() {
 								<NavLink className="nav-link1"  to="/recipes">Recipes</NavLink>
 							</li>
 							<li className="menu-item">
-								<NavLink className="nav-link1"  to="/about">About Us</NavLink>
+								<NavLink className="nav-link1"  to="/earn">About Us</NavLink>
 							</li>
 						</span>
 

@@ -8,7 +8,8 @@ on:
     branches: [ "development" ]
   pull_request:
     branches: [ "development" ]
-
+env:
+  CI : ""
 jobs:
   build:
 
@@ -29,4 +30,4 @@ jobs:
     - run: npm i
     # - run: npm test
     - run: npm run build --if-present
-    - run: mv /home/visom6/actions-runner/_work/maaAmmaFe/maaAmmaFe/build/*  /home/visom6/maaamma_visom6_com
+    - run: mv -f /home/visom6/actions-runner/_work/maaAmmaFe/maaAmmaFe/build/*  /home/visom6/maaamma_visom6_com
